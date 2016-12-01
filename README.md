@@ -1,7 +1,7 @@
 # Motion Pictures
 
 ## Usage
-  'rake db:migrate' then 'shotgun'
+  `rake db:migrate` then `shotgun`
 
 ## Description
   Users can create films and specify their relationship to them.
