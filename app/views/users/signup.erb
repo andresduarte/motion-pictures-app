@@ -5,15 +5,11 @@
   <input type="text" name="username" placeholder="username"><br>
   <input type="text" name="email" placeholder="email"><br>
   <input type="text" name="password" placeholder="password"><br>
-  <input type="submit" value="Sign Up"><br>
+  <input type="submit" value="Sign Up"><br><br>
 
 </form>
 
-<% if logged_in? %>
-
-  <a href="/logout">Log Out</a>
-
-<% else %>
+<% if !logged_in? %>
 
   <a href="/login">Log In</a>
 

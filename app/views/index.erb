@@ -2,11 +2,7 @@
 
 <h4>At Motion Pictures users can create films, <br> and specify their relationship to them.</h4>
 
-<% if logged_in? %>
-
-  <a href="/logout">Log Out</a>
-
-<% else %>
+<% if !logged_in? %>
 
   <a href="/signup">Sign Up</a><br>
   <a href="/login">Log In</a>

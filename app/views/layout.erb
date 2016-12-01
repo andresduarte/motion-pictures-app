@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Motion Pictures</title>
+  </head>
+  <body>
+
+    <%= yield %>
+
+    <% if logged_in? %>
+      <a href="/logout"> Log Out </a><br>
+    <%end %>
+
+  </body>
+</html>
