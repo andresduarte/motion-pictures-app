@@ -13,11 +13,11 @@
 ActiveRecord::Schema.define(version: 20161201163822) do
 
   create_table "films", force: :cascade do |t|
-    t.string "title"
-    t.string "genre"
-    t.string "runtime"
-    t.string "writer"
-    t.string "director"
+    t.string  "title"
+    t.string  "genre"
+    t.string  "runtime"
+    t.boolean "writer"
+    t.boolean "director"
   end
 
   create_table "user_films", force: :cascade do |t|

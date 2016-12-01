@@ -5,9 +5,9 @@ class CreateFilms < ActiveRecord::Migration[5.0]
       t.string :title
       t.string :genre
       t.string :runtime
-      t.string :writer
-      t.string :director
-    end  
+      t.boolean :writer
+      t.boolean :director
+    end
   end
 
 end

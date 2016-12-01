@@ -1,0 +1,10 @@
+albert = User.create(username: "albert83", email: "albert83@gmail.com", password: "cat47")
+tommy = User.create(username: "tommy459", email: "tommy459@gmail.com", password: "blue9")
+sam = User.create(username: "sam2", email: "sam2@gmail.com", password: "hippo8")
+rascal = User.create(username: "rascal215", email: "rascal215@gmail.com", password: "horse7")
+
+iron_rush = Film.create(title: "Iron Rush", genre: "action", runtime: "158", writer: true, director: false, user: [albert])
+tap_out = Film.create(title: "Tap Out", genre: "action", runtime: "158", writer: true, director: false, user: [tommy])
+bee_fly = Film.create(title: "Bee Fly", genre: "action", runtime: "158", writer: true, director: false)
+rainbow_stars = Film.create(title: "Rainbow Stars", genre: "action", runtime: "158", writer: true, director: false, user: [tommy, sam])
+plum = Film.create(title: "Iron Rush", genre: "action", runtime: "158", writer: true, director: false, user: [rascal])
