@@ -1,0 +1,15 @@
+<h2> Welcome, <%= current_user.username %> </h2><br>
+
+<h3> Films </h3>
+
+  <% @films.each do |film| %>
+  
+  <ul>
+
+    <li><h5><%= film.title %></h5></li>
+    <li><h5><%= film.genre %></h5></li>
+    <li><h5><%= film.runtime %></h5></li>
+    <li><h5><%= film.writer %></h5></li>
+    <li><h5><%= film.director %></h5></li>
+
+  </ul>
