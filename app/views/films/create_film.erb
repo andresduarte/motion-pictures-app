@@ -5,6 +5,15 @@
   <input type="text" name="genre" placeholder="genre"><br>
   <input type="text" name="runtime" placeholder="runtime"><br>
   <% User.all.each do |user| %>
-    <input type="checkbox" name="" value="">
+    <% Writer.all.each do |writer| %>
+      <% Director.all.each do |director| %>
+      
+        <h4><%= user.name %></h4>
+        <h4>writer <input type="checkbox" name="film[writer_id]"  id="<%= pet.id %>" value="<%= pet.id %>"></h4>
+        <h4>director <input type="checkbox" name="film[writer_id]"  id="<%= pet.id %>" value="<%= pet.id %>"></h4><br>
+
+      <% end %>
+    <% end %>
+  <% end %>
 
 </form>

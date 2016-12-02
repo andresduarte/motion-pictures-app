@@ -11,4 +11,6 @@ class FilmsController < ApplicationController
 
   get '/films/new' do
 
+  end
+
 end
