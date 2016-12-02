@@ -2,7 +2,7 @@ class FilmsController < ApplicationController
 
   get '/films' do
     if logged_in?
-      @films = Film.all
+      @films = Film.all.uniq
       erb :'films/films'
     else
       redirect '/Login'
@@ -10,7 +10,11 @@ class FilmsController < ApplicationController
   end
 
   get '/films/new' do
-
+    if logged_in?
+      erb :'films/create_film'
+    else
+      redirect '/'
+    end
   end
 
 end

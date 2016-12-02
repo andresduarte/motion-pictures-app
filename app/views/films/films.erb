@@ -1,15 +1,50 @@
-<h2> Welcome, <%= current_user.username %> </h2><br>
 
-<h3> Films </h3>
 
-  <% @films.each do |film| %>
-  
-  <ul>
 
-    <li><h5><%= film.title %></h5></li>
-    <li><h5><%= film.genre %></h5></li>
-    <li><h5><%= film.runtime %></h5></li>
-    <li><h5><%= film.writer %></h5></li>
-    <li><h5><%= film.director %></h5></li>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
 
-  </ul>
+    <style type="text/css">
+    <!--
+    .tab { margin-left: 40px; }
+    -->
+    </style>
+
+    <style type="text/css">
+    <!--
+    .tab2 { margin-left: 80px; }
+    -->
+    </style>
+
+  </head>
+  <body>
+
+    <h1> Welcome, <%= current_user.username %> </h1><br> 
+
+    <h2> Films </h2>
+
+      <% @films.each do |film| %>
+
+      <ul>
+
+        <li><h3><%= film.title %></h3></li>
+        <li class="tab"><h4>genre: <%= film.genre %></h4></li>
+        <li class="tab"><h4>runtime: <%= film.runtime %></h4></li>
+        <li class="tab"><h4><%= film.writers.size == 1 ? "writer:" : "writers:" %></h4></li>
+        <% film.writers.each do |writer| %>
+          <li class="tab2"> <h4><%= writer.user.username %></h4></li>
+        <% end %>
+        <li class="tab"><h4><%= film.directors.size == 1 ? "director:" : "directors:" %></h4></li>
+        <% film.directors.each do |director| %>
+          <li class="tab2"><h4><%= director.user.username %></h4></li>
+        <% end %>
+
+      </ul>
+
+      <% end %>
+
+  </body>
+</html>

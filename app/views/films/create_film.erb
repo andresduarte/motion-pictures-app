@@ -1,19 +1,37 @@
-<h2>New Film</h2>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
 
-<form action="/" method="post">
-  <input type="text" name="title" placeholder="title"><br>
-  <input type="text" name="genre" placeholder="genre"><br>
-  <input type="text" name="runtime" placeholder="runtime"><br>
-  <% User.all.each do |user| %>
-    <% Writer.all.each do |writer| %>
-      <% Director.all.each do |director| %>
-      
-        <h4><%= user.name %></h4>
-        <h4>writer <input type="checkbox" name="film[writer_id]"  id="<%= pet.id %>" value="<%= pet.id %>"></h4>
-        <h4>director <input type="checkbox" name="film[writer_id]"  id="<%= pet.id %>" value="<%= pet.id %>"></h4><br>
+    <style type="text/css">
+    <!--
+    .tab { margin-left: 40px; }
+    -->
+    </style>
 
+  </head>
+  <body>
+
+    <h2>New Film</h2>
+
+    <form action="/" method="post">
+      <input type="text" name="title" placeholder="title"><br>
+      <input type="text" name="genre" placeholder="genre"><br>
+      <input type="text" name="runtime" placeholder="runtime"><br>
+      <% User.all.each do |user| %>
+        <% Writer.all.each do |writer| %>
+          <% Director.all.each do |director| %>
+
+            <h4><%= user.username %></h4>
+            <h4 class="tab">writer<input type="checkbox" name="film[writer_id]"  id="<%= writer.id %>" value="<%= writer.id %>"></h4>
+            <h4 class="tab">director <input type="checkbox" name="film[director_id]"  id="<%= director.id %>" value="<%= director.id %>"></h4><br>
+
+          <% end %>
+        <% end %>
       <% end %>
-    <% end %>
-  <% end %>
 
-</form>
+    </form>
+
+  </body>
+</html>
