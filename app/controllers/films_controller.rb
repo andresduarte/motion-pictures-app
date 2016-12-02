@@ -17,13 +17,13 @@ class FilmsController < ApplicationController
     end
   end
 
-  get '/tweets/:id' do
+  get '/films/:id' do
     if logged_in?
-      @tweet = Tweet.find_by_id(params[:id])
+      @film = Film.find_by_id(params[:id])
       erb :'films/show_film'
     else
       redirect '/login'
     end
   end
-  
+
 end
