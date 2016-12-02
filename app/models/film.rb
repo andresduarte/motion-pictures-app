@@ -1,6 +1,9 @@
 class Film < ActiveRecord::Base
 
-  has_many :user_films
-  has_many :users, through: :user_films
+  has_many :writer_films
+  has_many :writers, through: :writer_films
+  has_many :director_films
+  has_many :directors, through: :director_films
+  
 
 end
