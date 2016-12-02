@@ -8,5 +8,7 @@ class FilmsController < ApplicationController
       redirect '/Login'
     end
   end
-  
+
+  get '/films/new' do
+
 end

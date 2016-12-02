@@ -1,6 +1,6 @@
 class UserFilm < ActiveRecord::Base
 
-  belongs_to :user_id
-  belongs_to :film_id
+  belongs_to :user
+  belongs_to :film
 
 end
