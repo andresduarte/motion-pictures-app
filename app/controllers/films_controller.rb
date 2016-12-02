@@ -13,8 +13,17 @@ class FilmsController < ApplicationController
     if logged_in?
       erb :'films/create_film'
     else
-      redirect '/'
+      redirect 'login'
     end
   end
 
+  get '/tweets/:id' do
+    if logged_in?
+      @tweet = Tweet.find_by_id(params[:id])
+      erb :'films/show_film'
+    else
+      redirect '/login'
+    end
+  end
+  
 end
