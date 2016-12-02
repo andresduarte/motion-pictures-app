@@ -26,4 +26,19 @@ class FilmsController < ApplicationController
     end
   end
 
+  get '/films/:id/delete' do
+    if logged_in?
+      @film = Film.find_by_id(params[:id])
+      if @film.writers.any? { |writer| writer.user_id == current_user.id } || @film.directors.any? { |director| director.user_id == current_user.id}
+        @film.delete
+        redirect '/films'
+      else
+        redirect '/films'
+      end
+    else
+      redirect '/login'
+    end
+  end
+
+
 end
