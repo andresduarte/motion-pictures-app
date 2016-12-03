@@ -26,20 +26,15 @@
       <input type="hidden" id="hidden" name="_method" value="PATCH">
       <input type="text" name="film[title]" placeholder="title"  value="<% @film.title %>"><br>
       <input type="text" name="film[genre]" placeholder="genre" value="<% @film.genre %>"><br>
-      <input type="text" name="film[runtime]" placeholder="runtime" value="<% @film.runtime %>"><br>
+      <input type="text" name="film[runtime]" placeholder="runtime" value="<% @film.runtime %>"><br><br>
       <% User.all.each do |user| %>
-        <% Writer.all.each do |writer| %>
-          <% Director.all.each do |director| %>
 
             <h4 class="together "><%= user.username %></h4>
-            <h4 class="together "><input type="checkbox" name="film[writer_ids][]"  id="writer_<%= writer.id %>" value="<%= writer.id %>" <%='checked' if @film.writers.any? {|w| w.id == writer.id} %>> writer</h4>
-            <h4 class="together "><input type="checkbox" name="film[director_ids][]"  id="director_<%= director.id %>" value="<%= director.id %>" <%='checked' if @film.directors.any? {|d| d.id == director.id} %>> director</h4>
-
-          <% end %>
-        <% end %>
+            <h4 class="together "><input type="checkbox" name="film[writer_ids][]"  id="writer_<%= user.writer.id %>" value="<%= user.writer.id %>" <%='checked' if @film.writers.any? {|w| w.id == user.writer.id} %>> writer</h4>
+            <h4 class="together "><input type="checkbox" name="film[director_ids][]"  id="director_<%= user.director.id %>" value="<%= user.director.id %>" <%='checked' if @film.directors.any? {|d| d.id == user.director.id} %>> director</h4>
+            <br><br>
       <% end %>
 
-      <br><br>
       <input type="submit" value="Edit Film">
 
     </form>

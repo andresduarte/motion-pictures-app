@@ -18,7 +18,7 @@ class FilmsController < ApplicationController
   end
 
   post '/films' do
-    if params["title"] == "" || params["genre"] == "" || params["runtime"] == ""
+    if params["film"]["title"] == "" || params["film"]["genre"] == "" || params["film"]["runtime"] == "" || params["film"]["writer_ids"] == nil || params["film"]["director_ids"] == nil
       redirect "/films/new"
     else
       @film = Film.create(params["film"])
@@ -51,7 +51,7 @@ class FilmsController < ApplicationController
   end
 
   patch '/films/:id' do
-    if params["title"] == "" || params["genre"] == "" || params["runtime"] == ""
+    if params["film"]["title"] == "" || params["film"]["genre"] == "" || params["film"]["runtime"] == "" || params["film"]["writer_ids"] == nil || params["film"]["director_ids"] == nil
       redirect "films/#{params[:id]}/edit"
     else
       @film = Film.find_by_id(params[:id])
