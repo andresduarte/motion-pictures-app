@@ -1,17 +1,17 @@
 <h1><%= @film.title %></h1>
 <h3>  genre:<%= @film.genre %></h3>
 <h3>  runtime:<%= @film.runtime + "min" %></h3>
-<h3><%= film.writers.size == 1 ? "  writer:" : "  writers:" %></h3>
+<h3><%= @film.writers.size == 1 ? "  writer:" : "  writers:" %></h3>
 <%  @film.writers.each do |writer| %>
   <h3>    <%= writer.user.username %></h3>
 <% end %>
-<h3><%= film.writers.size == 1 ? "  director:" : "  directors:" %></h3>
-<% @films.directors.each do |director| %>
+<h3><%= @film.writers.size == 1 ? "  director:" : "  directors:" %></h3>
+<% @film.directors.each do |director| %>
   <h3>    <%= director.user.username %></h3>
 <% end %>
 
 <form action="films/<%= @film.id/delete %>" method="post">
-  
+
   <input type="hidden" id="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Film">
 

@@ -12,11 +12,12 @@
 
     <style type="text/css">
     <!--
-    input[type='checkbox'] {
+    .together {
+    display: block;
     float: left;
-    width: 20px;
+    display: block;
     }
-    input[type='checkbox'] + label {
+    .together2 {
       display: block;
       width: 30px;
     }
@@ -28,7 +29,7 @@
 
     <h2>New Film</h2>
 
-    <form action="/" method="post">
+    <form action="/films" method="post">
       <input type="text" name="film[title]" placeholder="title"><br>
       <input type="text" name="film[genre]" placeholder="genre"><br>
       <input type="text" name="film[runtime]" placeholder="runtime"><br>
@@ -36,18 +37,15 @@
         <% Writer.all.each do |writer| %>
           <% Director.all.each do |director| %>
 
-            <h4><%= user.username %></h4>
-            <h4 class="tab"><input type="checkbox" name="film[writer_id]"  id="<%= writer.id %>" value="<%= writer.id %>"> writer</h4>
-            <h4 class="tab"><input type="checkbox" name="film[director_id]"  id="<%= director.id %>" value="<%= director.id %>"> director</h4><br>
+            <h4 class="together "><%= user.username %></h4>
+            <h4 class="tab together "><input type="checkbox" name="film[writer_ids][]"  id="writer_<%= writer.id %>" value="<%= writer.id %>"> writer</h4>
+            <h4 class="tab together "><input type="checkbox" name="film[director_ids][]"  id="director_<%= director.id %>" value="<%= director.id %>"> director</h4>
 
           <% end %>
         <% end %>
       <% end %>
-      <input type="text" name="user[username]" id="user_username" placeholder="username">
-      <h4 class="tab"><input type="checkbox" name="new_user_writer" id="new_user_writer"> writer</h4>
-      <h4 class="tab"><input type="checkbox" name="new_user_director" id="new_user_director"> director</h4><br>
 
-
+      <br><br><br><br>
       <input type="submit" value="New Film"><br><br>
 
     </form>

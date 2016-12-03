@@ -10,36 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161201214107) do
-
-  create_table "director_films", force: :cascade do |t|
-    t.integer "director_id"
-    t.integer "film_id"
-  end
-
-  create_table "directors", force: :cascade do |t|
-    t.integer "user_id"
-  end
-
-  create_table "films", force: :cascade do |t|
-    t.string "title"
-    t.string "genre"
-    t.string "runtime"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "email"
-    t.string "password_digest"
-  end
-
-  create_table "writer_films", force: :cascade do |t|
-    t.integer "writer_id"
-    t.integer "film_id"
-  end
-
-  create_table "writers", force: :cascade do |t|
-    t.integer "user_id"
-  end
+ActiveRecord::Schema.define(version: 0) do
 
 end

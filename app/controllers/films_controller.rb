@@ -19,11 +19,14 @@ class FilmsController < ApplicationController
 
   post '/films' do
     if params["title"] == "" || params["genre"] == "" || params["runtime"] == ""
-      redirect "/tweets/new"
+      redirect "/films/new"
     else
       @film = Film.create(params["film"])
-      if !params["user"]["username"].empty?
-        @user = User.create(username)
+      @film.save
+      redirect "films/#{@film.id}"
+    end
+  end
+
 
   get '/films/:id' do
     if logged_in?
