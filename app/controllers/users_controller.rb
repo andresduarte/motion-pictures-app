@@ -15,9 +15,9 @@ class UsersController < ApplicationController
       @user = User.new(username: params["username"], email: params["email"], password: params["password"])
       @user.save
       session[:user_id] = @user.id
-      @writer = Writer.new(user_id: @user_id)
+      @writer = Writer.new(user_id: @user.id)
       @writer.save
-      @director = Director.new(user_id: @user_id)
+      @director = Director.new(user_id: @user.id)
       @director.save
       redirect '/films'
     end
