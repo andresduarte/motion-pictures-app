@@ -10,26 +10,45 @@
     -->
     </style>
 
+    <style type="text/css">
+    <!--
+    input[type='checkbox'] {
+    float: left;
+    width: 20px;
+    }
+    input[type='checkbox'] + label {
+      display: block;
+      width: 30px;
+    }
+    -->
+    </style>
+
   </head>
   <body>
 
     <h2>New Film</h2>
 
     <form action="/" method="post">
-      <input type="text" name="title" placeholder="title"><br>
-      <input type="text" name="genre" placeholder="genre"><br>
-      <input type="text" name="runtime" placeholder="runtime"><br>
+      <input type="text" name="film[title]" placeholder="title"><br>
+      <input type="text" name="film[genre]" placeholder="genre"><br>
+      <input type="text" name="film[runtime]" placeholder="runtime"><br>
       <% User.all.each do |user| %>
         <% Writer.all.each do |writer| %>
           <% Director.all.each do |director| %>
 
             <h4><%= user.username %></h4>
-            <h4 class="tab">writer<input type="checkbox" name="film[writer_id]"  id="<%= writer.id %>" value="<%= writer.id %>"></h4>
-            <h4 class="tab">director <input type="checkbox" name="film[director_id]"  id="<%= director.id %>" value="<%= director.id %>"></h4><br>
+            <h4 class="tab"><input type="checkbox" name="film[writer_id]"  id="<%= writer.id %>" value="<%= writer.id %>"> writer</h4>
+            <h4 class="tab"><input type="checkbox" name="film[director_id]"  id="<%= director.id %>" value="<%= director.id %>"> director</h4><br>
 
           <% end %>
         <% end %>
       <% end %>
+      <input type="text" name="user[username]" id="user_username" placeholder="username">
+      <h4 class="tab"><input type="checkbox" name="new_user_writer" id="new_user_writer"> writer</h4>
+      <h4 class="tab"><input type="checkbox" name="new_user_director" id="new_user_director"> director</h4><br>
+
+
+      <input type="submit" value="New Film"><br><br>
 
     </form>
 
