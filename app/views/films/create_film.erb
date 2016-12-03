@@ -13,9 +13,9 @@
     <style type="text/css">
     <!--
     .together {
-    display: block;
-    float: left;
-    display: block;
+      display: block;
+      float: left;
+      margin: 0px 5px 0px 0px;
     }
     -->
     </style>
@@ -28,20 +28,15 @@
     <form action="/films" method="post">
       <input type="text" name="film[title]" placeholder="title"><br>
       <input type="text" name="film[genre]" placeholder="genre"><br>
-      <input type="text" name="film[runtime]" placeholder="runtime"><br>
+      <input type="text" name="film[runtime]" placeholder="runtime"><br><br>
       <% User.all.each do |user| %>
-        <% Writer.all.each do |writer| %>
-          <% Director.all.each do |director| %>
 
-            <h4 class="together "><%= user.username %></h4>
-            <h4 class="tab together "><input type="checkbox" name="film[writer_ids][]"  id="writer_<%= writer.id %>" value="<%= writer.id %>"> writer</h4>
-            <h4 class="tab together "><input type="checkbox" name="film[director_ids][]"  id="director_<%= director.id %>" value="<%= director.id %>"> director</h4>
-
-          <% end %>
-        <% end %>
+        <h4 class="together "><%= user.username %></h4>
+        <h4 class="tab together "><input type="checkbox" name="film[writer_ids][]"  id="writer_<%= user.writer.id %>" value="<%= user.writer.id %>"> writer</h4>
+        <h4 class="tab together "><input type="checkbox" name="film[director_ids][]"  id="director_<%= user.director.id %>" value="<%= user.director.id %>"> director</h4>
+        <br><br>
       <% end %>
 
-      <br><br><br><br>
       <input type="submit" value="New Film"><br><br>
 
     </form>

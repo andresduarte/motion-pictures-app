@@ -10,7 +10,7 @@
     display: block;
     float: left;
     height: 0%;
-    margin: 0px 5px 0px 0px;
+    margin: 0px 10px 0px 0px;
     }
     -->
     </style>
@@ -51,9 +51,9 @@
     <% @film.directors.each_with_index do |director, i| %>
       <h3 class="together2"><%= director.user.username %></h3>
       <% if i == @film.directors.size - 1 %>
-        <h3 class="together">.</h3>
+        <h3 class="together"><%= ". " %></h3>
       <% else %>
-        <h3 class="together">,</h3>
+        <h3 class="together"><%= ", " %></h3>
       <% end %>
     <% end %>
     <br><br>
