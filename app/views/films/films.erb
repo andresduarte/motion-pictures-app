@@ -25,17 +25,9 @@
 
       <ul>
 
-        <li><h3><%= film.title %></h3></li>
+        <li><h3><%= film.title.capitalize %></h3></li>
         <li class="tab"><h4>genre: <%= film.genre %></h4></li>
-        <li class="tab"><h4>runtime: <%= film.runtime + "min"%></h4></li>
-        <li class="tab"><h4><%= film.writers.size == 1 ? "writer:" : "writers:" %></h4></li>
-        <% film.writers.each do |writer| %>
-          <li class="tab2"> <h4><%= writer.user.username %></h4></li>
-        <% end %>
-        <li class="tab"><h4><%= film.directors.size == 1 ? "director:" : "directors:" %></h4></li>
-        <% film.directors.each do |director| %>
-          <li class="tab2"><h4><%= director.user.username %></h4></li>
-        <% end %>
+        <li class="tab"><h4>runtime: <%= film.runtime + " min"%></h4></li>
 
       </ul>
 

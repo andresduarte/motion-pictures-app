@@ -1,18 +1,75 @@
-<h1><%= @film.title %></h1>
-<h3>  genre:<%= @film.genre %></h3>
-<h3>  runtime:<%= @film.runtime + "min" %></h3>
-<h3><%= @film.writers.size == 1 ? "  writer:" : "  writers:" %></h3>
-<%  @film.writers.each do |writer| %>
-  <h3>    <%= writer.user.username %></h3>
-<% end %>
-<h3><%= @film.writers.size == 1 ? "  director:" : "  directors:" %></h3>
-<% @film.directors.each do |director| %>
-  <h3>    <%= director.user.username %></h3>
-<% end %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
 
-<form action="films/<%= @film.id/delete %>" method="post">
+    <style type="text/css">
+    <!--
+    .together {
+    display: block;
+    float: left;
+    height: 0%;
+    margin: 0px 5px 0px 0px;
+    }
+    -->
+    </style>
+    <style type="text/css">
+    <!--
+    .tab { margin-left: 40px; }
+    -->
+    </style>
 
-  <input type="hidden" id="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete Film">
+    <style type="text/css">
+    <!--
+    .together2 {
+      display: block;
+      float: left;
+      height: 0%;
+      margin: 0px 0px 0px 0px;
+    }
+    -->
+    </style>
 
-</form>
+  </head>
+  <body>
+
+    <h1><%= @film.title %></h1>
+    <h3>  genre: <%= @film.genre %></h3>
+    <h3>  runtime: <%= @film.runtime + " min" %></h3>
+    <h3 class="together"><%= @film.writers.size == 1 ? "  writer: " : "  writers: " %></h3>
+    <%  @film.writers.each_with_index do |writer, i| %>
+      <h3 class="together2" ><%= writer.user.username %></h3>
+      <% if i == @film.writers.size - 1 %>
+        <h3 class="together">.</h3>
+      <% else %>
+        <h3 class="together">,</h3>
+      <% end %>
+    <% end %>
+    <br><br>
+    <h3 class="together"><%= @film.writers.size == 1 ? "  director: " : "  directors: " %></h3>
+    <% @film.directors.each_with_index do |director, i| %>
+      <h3 class="together2"><%= director.user.username %></h3>
+      <% if i == @film.directors.size - 1 %>
+        <h3 class="together">.</h3>
+      <% else %>
+        <h3 class="together">,</h3>
+      <% end %>
+    <% end %>
+    <br><br>
+    <form action="films/<%= @film.id %>/delete %>" method="post">
+
+      <input type="hidden" id="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete Film">
+
+    </form>
+
+    <% if logged_in? %>
+      <br>
+      <a href="/films/new">New Film</a><br>
+      <a href="/films">Films</a><br>
+
+    <% end %>
+
+  </body>
+</html>
