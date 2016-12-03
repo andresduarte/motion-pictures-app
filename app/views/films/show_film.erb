@@ -34,7 +34,7 @@
   </head>
   <body>
 
-    <h1><%= @film.title %></h1>
+    <h1><%= @film.title.capitalize %></h1>
     <h3>  genre: <%= @film.genre %></h3>
     <h3>  runtime: <%= @film.runtime + " min" %></h3>
     <h3 class="together"><%= @film.writers.size == 1 ? "  writer: " : "  writers: " %></h3>
@@ -57,7 +57,8 @@
       <% end %>
     <% end %>
     <br><br>
-    <form action="films/<%= @film.id %>/delete %>" method="post">
+
+    <form action="/films/<%= @film.id %>/delete" method="post">
 
       <input type="hidden" id="hidden" name="_method" value="DELETE">
       <input type="submit" value="Delete Film">
@@ -66,6 +67,7 @@
 
     <% if logged_in? %>
       <br>
+      <a href="/films/<%= @film.id %>/edit">Edit Film</a><br>
       <a href="/films/new">New Film</a><br>
       <a href="/films">Films</a><br>
 

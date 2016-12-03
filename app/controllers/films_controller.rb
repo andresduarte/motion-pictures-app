@@ -37,11 +37,35 @@ class FilmsController < ApplicationController
     end
   end
 
-  get '/films/:id/delete' do
+  get '/films/:id/edit' do
     if logged_in?
       @film = Film.find_by_id(params[:id])
       if @film.writers.any? { |writer| writer.user_id == current_user.id } || @film.directors.any? { |director| director.user_id == current_user.id}
-        @film.delete
+        erb :'films/edit_film'
+      else
+        redirect '/films'
+      end
+    else
+      redirect '/login'
+    end
+  end
+
+  patch '/films/:id' do
+    if params["title"] == "" || params["genre"] == "" || params["runtime"] == ""
+      redirect "films/#{params[:id]}/edit"
+    else
+      @film = Film.find_by_id(params[:id])
+      @film.update(params["film"])
+      @film.save
+      redirect "/films/#{@film.id}"
+    end
+  end
+
+  delete '/films/:id/delete' do
+    if logged_in?
+      @film = Film.find_by_id(params[:id])
+      if @film.writers.any? { |writer| writer.user_id == current_user.id } || @film.directors.any? { |director| director.user_id == current_user.id}
+        @film.destroy
         redirect '/films'
       else
         redirect '/films'
