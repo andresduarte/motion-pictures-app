@@ -3,34 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-
-    <style type="text/css">
-    <!--
-    .together {
-    display: block;
-    float: left;
-    height: 0%;
-    margin: 0px 10px 0px 0px;
-    }
-    -->
-    </style>
-    <style type="text/css">
-    <!--
-    .tab { margin-left: 40px; }
-    -->
-    </style>
-
-    <style type="text/css">
-    <!--
-    .together2 {
-      display: block;
-      float: left;
-      height: 0%;
-      margin: 0px 0px 0px 0px;
-    }
-    -->
-    </style>
-
+    <link rel="stylesheet" type="text/css" href="/style.css">
   </head>
   <body>
 
@@ -39,7 +12,7 @@
     <h3>  runtime: <%= @film.runtime + " min" %></h3>
     <h3 class="together"><%= @film.writers.size == 1 ? "  writer: " : "  writers: " %></h3>
     <%  @film.writers.each_with_index do |writer, i| %>
-      <h3 class="together2" ><%= writer.user.username %></h3>
+      <h3 class="together2" ><a href="/users/<%= writer.user.slug %>"><%= writer.user.username %></a></h3>
       <% if i == @film.writers.size - 1 %>
         <h3 class="together">.</h3>
       <% else %>
@@ -49,7 +22,7 @@
     <br><br>
     <h3 class="together"><%= @film.writers.size == 1 ? "  director: " : "  directors: " %></h3>
     <% @film.directors.each_with_index do |director, i| %>
-      <h3 class="together2"><%= director.user.username %></h3>
+      <h3 class="together2"><a href="/users/<%= director.user.slug %>"><%= director.user.username %></a></h3>
       <% if i == @film.directors.size - 1 %>
         <h3 class="together"><%= ". " %></h3>
       <% else %>

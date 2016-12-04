@@ -2,34 +2,35 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
-
-    <style type="text/css">
-    <!--
-    .tab { margin-left: 40px; }
-    -->
-    </style>
-
+    <title><% @user.username %></title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
   </head>
   <body>
 
-    <h2><%= @user.username %></h2>
+    <h2><%= @user.username.capitalize %></h2>
 
     <h3>Films</h3>
 
     <ul>
-      <li>Writer</li>
+      <li>Writer</li><br>
       <% @user.writer.films.each do |film| %>
           <li class="tab"><a href="/films/<%= film.id %>" style="text-decoration:none"><%= film.title.capitalize %></a></li>
       <% end %>
     </ul>
 
     <ul>
-      <li>Director</li>
+      <li>Director</li><br>
       <% @user.director.films.each do |film| %>
         <li class="tab"><a href="/film/<%= film.id %>" style="text-decoration:none"><%= film.title.capitalize %></a></li>
       <% end %>
     </ul>
+
+    <% if logged_in? %>
+
+      <a href="/films/new">New Film</a><br>
+      <a href="/films">Films</a><br>
+
+    <% end %>
 
   </body>
 </html>

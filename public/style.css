@@ -1,0 +1,17 @@
+.tab {
+  margin-left: 20px;
+}
+
+.together {
+display: block;
+float: left;
+height: 0%;
+margin: 0px 10px 0px 0px;
+}
+
+.together2 {
+  display: block;
+  float: left;
+  height: 0%;
+  margin: 0px 0px 0px 0px;
+}
