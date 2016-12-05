@@ -2,13 +2,14 @@
 <html>
   <head>
     <title>Motion Pictures</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
   </head>
   <body>
 
     <%= yield %>
 
     <% if logged_in? %>
-      
+
       <a href="/logout"> Log Out </a><br>
     <%end %>
 

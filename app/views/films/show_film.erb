@@ -20,7 +20,7 @@
       <% end %>
     <% end %>
     <br><br>
-    <h3 class="together"><%= @film.writers.size == 1 ? "  director: " : "  directors: " %></h3>
+    <h3 class="together"><%= @film.directors.size == 1 ? "  director: " : "  directors: " %></h3>
     <% @film.directors.each_with_index do |director, i| %>
       <h3 class="together2"><a href="/users/<%= director.user.slug %>"><%= director.user.username %></a></h3>
       <% if i == @film.directors.size - 1 %>
@@ -31,7 +31,7 @@
     <% end %>
     <br><br>
 
-    <form action="/films/<%= @film.id %>/delete" method="post">
+    <form action="/films/<%= @film.slug %>/delete" method="post">
 
       <input type="hidden" id="hidden" name="_method" value="DELETE">
       <input type="submit" value="Delete Film">
@@ -40,7 +40,8 @@
 
     <% if logged_in? %>
       <br>
-      <a href="/films/<%= @film.id %>/edit">Edit Film</a><br>
+      <a href="/films/<%= @film.slug %>/edit">Edit Film</a><br>
+      <a href="/users/<%= current_user.slug %>">Profile</a><br>
       <a href="/films/new">New Film</a><br>
       <a href="/films">Films</a><br>
 

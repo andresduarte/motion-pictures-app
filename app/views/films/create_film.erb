@@ -2,24 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
-
-    <style type="text/css">
-    <!--
-    .tab { margin-left: 40px; }
-    -->
-    </style>
-
-    <style type="text/css">
-    <!--
-    .together {
-      display: block;
-      float: left;
-      margin: 0px 5px 0px 0px;
-    }
-    -->
-    </style>
-
+    <title>New Film</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
   </head>
   <body>
 
@@ -28,12 +12,12 @@
     <form action="/films" method="post">
       <input type="text" name="film[title]" placeholder="title"><br>
       <input type="text" name="film[genre]" placeholder="genre"><br>
-      <input type="text" name="film[runtime]" placeholder="runtime"><br><br>
+      <input type="text" name="film[runtime]" placeholder="runtime (in minutes)"><br><br>
       <% User.all.each do |user| %>
 
         <h4 class="together "><%= user.username %></h4>
-        <h4 class="tab together "><input type="checkbox" name="film[writer_ids][]"  id="writer_<%= user.writer.id %>" value="<%= user.writer.id %>"> writer</h4>
-        <h4 class="tab together "><input type="checkbox" name="film[director_ids][]"  id="director_<%= user.director.id %>" value="<%= user.director.id %>"> director</h4>
+        <h4 class="together "><input type="checkbox" name="film[writer_ids][]"  id="writer_<%= user.writer.id %>" value="<%= user.writer.id %>"> writer</h4>
+        <h4 class="together "><input type="checkbox" name="film[director_ids][]"  id="director_<%= user.director.id %>" value="<%= user.director.id %>"> director</h4>
         <br><br>
       <% end %>
 
@@ -43,6 +27,7 @@
 
     <% if logged_in? %>
 
+      <a href="/users/<%= current_user.slug %>">Profile</a><br>
       <a href="/films">Films</a><br>
 
     <% end %>

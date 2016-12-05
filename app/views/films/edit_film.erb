@@ -2,25 +2,14 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
-
-    <style type="text/css">
-    <!--
-    .together {
-    display: block;
-    float: left;
-    height: 0%;
-    margin: 0px 5px 0px 0px;
-    }
-    -->
-    </style>
-
+    <title>Edit Film</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
   </head>
   <body>
 
     <h2>Edit Film</h2>
 
-    <form action="/films/<%= @film.id %>" method="post">
+    <form action="/films/<%= @film.slug %>" method="post">
       <input type="hidden" id="hidden" name="_method" value="PATCH">
       <input type="text" name="film[title]" placeholder="title"  value="<% @film.title %>"><br>
       <input type="text" name="film[genre]" placeholder="genre" value="<% @film.genre %>"><br>
@@ -39,6 +28,7 @@
 
     <% if logged_in? %>
       <br>
+      <a href="/users/<%= current_user.slug %>">Profile</a><br>
       <a href="/films/new">New Film</a><br>
       <a href="/films">Films</a><br>
 

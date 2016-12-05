@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
   has_one :writer
   has_one :director
 
+  def slug
+    self.username.gsub(" ", "-").downcase
+  end
+
 end

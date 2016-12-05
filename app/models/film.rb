@@ -8,4 +8,8 @@ class Film < ActiveRecord::Base
   has_many :director_films
   has_many :directors, through: :director_films
 
+  def slug
+    self.title.gsub(" ", "-").downcase
+  end
+
 end

@@ -3,19 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Films</title>
-
-    <style type="text/css">
-    <!--
-    .tab { margin-left: 40px; }
-    -->
-    </style>
-
-    <style type="text/css">
-    <!--
-    .tab2 { margin-left: 80px; }
-    -->
-    </style>
-
+    <link rel="stylesheet" type="text/css" href="/style.css">
   </head>
   <body>
 
@@ -25,7 +13,7 @@
 
       <ul>
 
-        <li><h3><a href="films/<%= film.id %>" style="text-decoration:none"><%= film.title.capitalize %></a></h3></li>
+        <li><h3><a href="films/<%= film.slug %>"><%= film.title.capitalize %></a></h3></li>
         <li class="tab"><h4>genre: <%= film.genre %></h4></li>
         <li class="tab"><h4>runtime: <%= film.runtime + " min"%></h4></li>
 
@@ -35,8 +23,9 @@
 
       <% if logged_in? %>
 
+        <a href="/users/<%= current_user.slug %>">Profile</a><br>
         <a href="/films/new">New Film</a><br>
-
+        
       <% end %>
 
   </body>
