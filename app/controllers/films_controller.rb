@@ -9,7 +9,8 @@ class FilmsController < ApplicationController
       @films = Film.all
       erb :'films/films'
     else
-      redirect '/Login'
+      flash[:message] = "Please log in to access app"
+      redirect '/login'
     end
   end
 
@@ -17,6 +18,7 @@ class FilmsController < ApplicationController
     if logged_in?
       erb :'films/create_film'
     else
+      flash[:message] = "Please log in to access app"
       redirect 'login'
     end
   end
@@ -26,6 +28,7 @@ class FilmsController < ApplicationController
       @film = Film.find_by_slug(params[:slug])
       erb :'films/show_film'
     else
+      flash[:message] = "Please log in to access app"
       redirect '/login'
     end
   end
@@ -52,6 +55,7 @@ class FilmsController < ApplicationController
         redirect '/films'
       end
     else
+      flash[:message] = "Please log in to access app"
       redirect '/login'
     end
   end
@@ -81,6 +85,7 @@ class FilmsController < ApplicationController
         redirect '/films'
       end
     else
+      flash[:message] = "Please log in to access app"
       redirect '/login'
     end
   end

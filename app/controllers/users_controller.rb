@@ -1,10 +1,15 @@
+require 'rack-flash'
+
 class UsersController < ApplicationController
+
+  use Rack::Flash
 
   get '/users' do
     if logged_in?
       @users = User.all
       erb :'users/users'
     else
+      flash[:message] = "Please log in to access app"
       redirect '/login'
     end
   end
@@ -14,6 +19,7 @@ class UsersController < ApplicationController
       @user = User.find_by_slug(params[:slug])
       erb :'users/show_user'
     else
+      flash[:message] = "Please log in to access app"
       redirect '/login'
     end
   end
@@ -28,6 +34,7 @@ class UsersController < ApplicationController
 
   post '/signup' do
     if params[:username] == "" || params[:email] == "" || params[:password] == ""
+      flash[:message] = "Please fill all fields to create film"
       redirect '/signup'
     else
       @user = User.new(username: params["username"], email: params["email"], password: params["password"])
@@ -37,6 +44,7 @@ class UsersController < ApplicationController
       @writer.save
       @director = Director.new(user_id: @user.id)
       @director.save
+      flash[:message] = "Successfully created user"
       redirect '/films'
     end
    end
@@ -53,8 +61,10 @@ class UsersController < ApplicationController
     @user = User.find_by(username: params["username"])
     if @user && @user.authenticate(params["password"])
       session[:user_id] = @user.id
+      flash[:message] = "Successfully logged in"
       redirect '/films'
     else
+      flash[:message] = "User not found, please try again"
       redirect '/signup'
     end
   end
@@ -62,6 +72,7 @@ class UsersController < ApplicationController
   get '/logout' do
     if logged_in?
       session.destroy
+      flash[:message] = "Successfully logged out"
       redirect '/login'
     else
       redirect '/'
