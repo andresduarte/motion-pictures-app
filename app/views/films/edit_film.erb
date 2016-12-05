@@ -7,6 +7,10 @@
   </head>
   <body>
 
+    <% if flash.has?(:message) %>
+      <%= flash[:message] %>
+    <% end %>
+
     <h2>Edit Film</h2>
 
     <form action="/films/<%= @film.slug %>" method="post">

@@ -7,6 +7,10 @@
   </head>
   <body>
 
+    <% if flash.has?(:message) %>
+      <%= flash[:message] %>
+    <% end %>
+
     <h2> Films </h2>
 
       <% @films.each do |film| %>
@@ -26,7 +30,7 @@
         <a href="/users/<%= current_user.slug %>">Profile</a><br>
         <a href="/users">Users</a><br>
         <a href="/films/new">New Film</a><br>
-        
+
 
       <% end %>
 

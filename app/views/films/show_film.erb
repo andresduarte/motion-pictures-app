@@ -7,6 +7,10 @@
   </head>
   <body>
 
+    <% if flash.has?(:message) %>
+      <%= flash[:message] %>
+    <% end %>
+
     <h1><%= @film.title.capitalize %></h1>
     <h3>  genre: <%= @film.genre %></h3>
     <h3>  runtime: <%= @film.runtime + " min" %></h3>
