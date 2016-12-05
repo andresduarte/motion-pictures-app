@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Users</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+  </head>
+  <body>
+
+    <h2>Users</h2>
+
+    <% @users.each do |user| %>
+
+      <ul>
+
+        <li><h3><a href="/users/<%= user.slug %>"><%= user.username.capitalize %>:</a><%= "   writer   (#{user.writer.films.size})   director   (#{user.director.films.size})" %></h3></li>
+
+      </ul>
+
+    <% end %>
+
+    <% if logged_in? %>
+
+      <a href="/users/<%= current_user.slug %>">Profile</a><br>
+      <a href="/films/new">New Film</a><br>
+      <a href="/films">Films</a><br>
+
+
+    <% end %>
+
+  </body>
+</html>
