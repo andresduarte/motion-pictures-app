@@ -15,9 +15,12 @@
 
     <form action="/films/<%= @film.slug %>" method="post">
       <input type="hidden" id="hidden" name="_method" value="PATCH">
-      <input type="text" name="film[title]" placeholder="title"  value="<% @film.title %>"><br>
-      <input type="text" name="film[genre]" placeholder="genre" value="<% @film.genre %>"><br>
-      <input type="text" name="film[runtime]" placeholder="runtime" value="<% @film.runtime %>"><br><br>
+      <label for="film_title">Title</label><br>
+      <input type="text" name="film[title]" placeholder="title"  value="<%= @film.title %>"><br>
+      <label for="film_genre">Genre</label><br>
+      <input type="text" name="film[genre]" placeholder="genre" value="<%= @film.genre %>"><br>
+      <label for="film_runtime">Runtime</label><br>
+      <input type="text" name="film[runtime]" placeholder="runtime" value="<%= @film.runtime %>"><br><br>
       <% User.all.each do |user| %>
 
             <h4 class="together "><%= user.username %></h4>
